@@ -54,7 +54,7 @@ JSON="{\"filename\":\"${APP_NAME_INPUT}.${APP_SUFFIX_INPUT}\",\"appPath\":\"${KA
 curl -X POST https://api-test.kobiton.com/v1/apps \
     -H "Authorization: Basic $BASICAUTH" \
     -H 'Content-Type: application/json' \
-    -d $JSON
+    -d $JSON \
     -o ".tmp.upload-app-response.json"
 
 echo "Response:"
