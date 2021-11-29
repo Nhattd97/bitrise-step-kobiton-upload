@@ -101,7 +101,7 @@ inputs:
       value_options:
       - "true"
       - "false"
-  - kobiton_user_id:
+  - kobiton_username:
     opts:
       title: "Kobiton Username"
       summary: The user to upload to Kobiton
