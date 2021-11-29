@@ -81,7 +81,7 @@ inputs:
       description: |
         App Identifier
       is_expand: true
-      is_required: true
+      is_required: false
   - kobiton_app_type: "apk"
     opts:
       title: "App Type (ipa or apk)"
@@ -93,6 +93,14 @@ inputs:
       value_options:
       - "apk"
       - "ipa"
+  - kobiton_is_public_app: "false"
+    opts:
+      title: "Make the Application Public"
+      summary: Make the application public to everyone in the organization
+      is_required: false
+      value_options:
+      - "true"
+      - "false"
   - kobiton_user_id:
     opts:
       title: "Kobiton Username"
