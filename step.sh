@@ -15,7 +15,7 @@ APP_ID_INPUT=${kobiton_app_id}
 KOB_USERNAME_INPUT=${kobiton_username}
 KOB_APIKEY_INPUT=${kobiton_api_key}
 APP_SUFFIX_INPUT=${kobiton_app_type}
-IS_PUBLIC_APP=${kobiton_is_public_app}
+KOB_APP_ACCESS=${kobiton_app_access}
 
 BASICAUTH=$(echo -n $KOB_USERNAME_INPUT:$KOB_APIKEY_INPUT | base64)
 
@@ -60,17 +60,21 @@ curl -X POST https://api-test.kobiton.com/v1/apps \
 echo "Response:"
 cat ".tmp.upload-app-response.json"
 
-APP_ID=$(cat ".tmp.upload-app-response.json" | ack -o --match '(?<=appId\":")([_\%\&=\?\.aA-zZ0-9:/-]*)')
+APP_VERSION_ID=$(cat ".tmp.upload-app-response.json" | ack -o --match '(?<=versionId\":)([_\%\&=\?\.aA-zZ0-9:/-]*)')
 
-echo "Uploaded app to kobiton repo, appId: ${APP_ID}"
 
-if [ -z "$IS_PUBLIC_APP" ]; then
-    echo "Making appId: ${APP_ID} to public"
-    curl -X PUT https://api-test.kobiton.com/v1/apps/{$APP_ID}/public \
-        -H "Authorization: Basic $BASICAUTH"
-fi
+curl -X GET https://api-test.kobiton.com/v1/app/versions/{$APP_VERSION_ID} \
+  -H "Authorization: Basic $BASICAUTH" \
+  -H "Accept: application/json" \
+  -o ".tmp.get-appversion-response.json"
 
-echo "...done"
+APP_ID=$(cat ".tmp.get-appversion-response.json" | ack -o --match '(?<=appId\":)([_\%\&=\?\.aA-zZ0-9:/-]*)')
+
+curl -X PUT https://api-test.kobiton.com/v1/apps/{$APP_ID}/{$KOB_APP_ACCESS} \
+    -H "Authorization: Basic $BASICAUTH"
+
+echo "Uploaded app to kobiton repo with appId: ${APP_ID} and versionId: ${APP_VERSION_ID}"
+echo "Done"
 
 #
 # --- Export Environment Variables for other Steps:
