@@ -121,6 +121,12 @@ inputs:
       is_sensitive: true
 
 outputs:
+  - KOBITON_APP_ID:
+    opts:
+      title: "App ID"
+      summary: Kobiton App ID
+      description: |
+        The App ID that the app has been uploaded to Kobiton Repo.
   - KOBITON_UPLOAD_URL:
     opts:
       title: "Upload URL"
