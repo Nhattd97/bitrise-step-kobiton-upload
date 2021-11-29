@@ -12,7 +12,7 @@ hash ack 2>/dev/null || {
 APP_NAME_INPUT=${kobiton_app_name}
 APP_PATH_INPUT=${kobiton_app_path}
 APP_ID_INPUT=${kobiton_app_id}
-KOB_USERNAME_INPUT=${kobiton_user_name}
+KOB_USERNAME_INPUT=${kobiton_username}
 KOB_APIKEY_INPUT=${kobiton_api_key}
 APP_SUFFIX_INPUT=${kobiton_app_type}
 IS_PUBLIC_APP=${kobiton_is_public_app}
