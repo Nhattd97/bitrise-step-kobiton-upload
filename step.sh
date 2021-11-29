@@ -33,6 +33,8 @@ curl --silent -X POST https://api-test.kobiton.com/v1/apps/uploadUrl \
     -H 'Accept: application/json' \
     -d $JSON \
     -o ".tmp.upload-url-response.json"
+    
+cat ".tmp.upload-url-response.json"
 
 UPLOAD_URL=$(cat ".tmp.upload-url-response.json" | ack -o --match '(?<=url\":")([_\%\&=\?\.aA-zZ0-9:/-]*)')
 KAPPPATH=$(cat ".tmp.upload-url-response.json" | ack -o --match '(?<=appPath\":")([_\%\&=\?\.aA-zZ0-9:/-]*)')
@@ -54,8 +56,6 @@ curl -X POST https://api-test.kobiton.com/v1/apps \
     -H 'Content-Type: application/json' \
     -d $JSON
     -o ".tmp.upload-app-response.json"
-
-cat ".tmp.upload-url-response.json"
 
 APP_ID=$(cat ".tmp.upload-app-response.json" | ack -o --match '(?<=appId\":")([_\%\&=\?\.aA-zZ0-9:/-]*)')
 
