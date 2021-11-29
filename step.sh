@@ -62,6 +62,7 @@ cat ".tmp.upload-app-response.json"
 
 APP_VERSION_ID=$(cat ".tmp.upload-app-response.json" | ack -o --match '(?<=versionId\":)([_\%\&=\?\.aA-zZ0-9:/-]*)')
 
+sleep 30
 
 curl -X GET https://api-test.kobiton.com/v1/app/versions/$APP_VERSION_ID \
   -H "Authorization: Basic $BASICAUTH" \
