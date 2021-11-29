@@ -98,6 +98,7 @@ inputs:
         Kobiton Username
       is_expand: true
       is_required: true
+      is_sensitive: true
   - kobiton_api_key:
     opts:
       title: "Kobiton API Key/Secret"
@@ -106,6 +107,7 @@ inputs:
         Kobiton API Key
       is_expand: true
       is_required: true
+      is_sensitive: true
 
 outputs:
   - KOBITON_UPLOAD_URL:
