@@ -93,14 +93,13 @@ inputs:
       value_options:
       - "apk"
       - "ipa"
-  - kobiton_is_public_app: "false"
+  - kobiton_app_access: "public"
     opts:
-      title: "Make the Application Public"
-      summary: Make the application public to everyone in the organization
-      is_required: false
+      title: "App accessibility"
+      summary: Specify if you want to keep this app private or global
       value_options:
-      - "true"
-      - "false"
+      - "public"
+      - "private"
   - kobiton_username:
     opts:
       title: "Kobiton Username"
