@@ -57,6 +57,9 @@ curl -X POST https://api-test.kobiton.com/v1/apps \
     -d $JSON
     -o ".tmp.upload-app-response.json"
 
+echo "Response:"
+cat ".tmp.upload-app-response.json"
+
 APP_ID=$(cat ".tmp.upload-app-response.json" | ack -o --match '(?<=appId\":")([_\%\&=\?\.aA-zZ0-9:/-]*)')
 
 echo "Uploaded app to kobiton repo, appId: ${APP_ID}"
