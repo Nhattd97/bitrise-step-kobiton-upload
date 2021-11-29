@@ -23,7 +23,7 @@ else
   JSON="{\"filename\":\"${APPNAME}.${APPSUFFIX}\",\"appId\":$APPID}"
 fi
 
-curl --silent -X POST https://api.kobiton.com/v1/apps/uploadUrl \
+curl --silent -X POST https://api-test.kobiton.com/v1/apps/uploadUrl \
   -H "Authorization: Basic $BASICAUTH" \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
@@ -42,7 +42,7 @@ curl  --progress-bar -T "${APPPATH}" -H "Content-Type: application/octet-stream"
 echo "Processing: ${KAPPPATH}"
 
 JSON="{\"filename\":\"${APPNAME}.${APPSUFFIX}\",\"appPath\":\"${KAPPPATH}\"}"
-curl -X POST https://api.kobiton.com/v1/apps \
+curl -X POST https://api-test.kobiton.com/v1/apps \
   -H "Authorization: Basic $BASICAUTH" \
   -H 'Content-Type: application/json' \
   -d $JSON
